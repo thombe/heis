@@ -4,6 +4,8 @@
 
 int main() {
     // Initialize hardware
+
+    // Endring gjort på linux pcen.
     if (!elev_init()) {
         printf("Unable to initialize elevator hardware!\n");
         return 1;
