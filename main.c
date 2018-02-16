@@ -4,6 +4,11 @@
 
 int main() {
     // Initialize hardware
+    //endringer i kode
+
+    if (1 == 1) {
+        printf("Hei test\n");
+    }
     if (!elev_init()) {
         printf("Unable to initialize elevator hardware!\n");
         return 1;
