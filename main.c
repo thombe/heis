@@ -7,6 +7,7 @@ int main() {
 
     // Endring gjort på GHUASNUN
     // endring fra edmond pc.
+    //Thomas endrer her nå.
     // hva skjer nå da hvis jeg endrer ting fra xps 13.
     if (!elev_init()) {
         printf("Unable to initialize elevator hardware!\n");
