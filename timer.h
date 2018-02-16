@@ -14,6 +14,7 @@ Only works for integer amount of seconds
 
 int get_wall_time(void);
 //git comment
+//another git comment
 
 // Function starts timer and sets duration to int dur.
 
