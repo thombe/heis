@@ -1,7 +1,7 @@
 #include "orders.h"
 #include "elev.h"
 
-int get_order(int floor)
+int get_order(elevator_motor_dir_t dir, int floor)
 {
   switch(elev_button_type_t)
   {

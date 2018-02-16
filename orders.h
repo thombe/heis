@@ -1,16 +1,18 @@
-#include <stdio.h>
-#include "elev.h"
+//Order module for elevator TTK4235
 #include <stdlib.h>
+#include <stdio.h>
 
+#include "elev.h"
 
 struct Orders
 {
   int button_channel_matrix;
-  bool orders[N_FLOORS][N_BUTTONS];
-}
+  int orders[N_FLOORS][N_BUTTONS];
+
+};
 
 
-int get_order(int floor);
+int get_order(elev_motor_direction_t dir, int floor);
 
 int add_order(int floor, int DIR);
 
