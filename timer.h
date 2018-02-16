@@ -13,6 +13,7 @@ Only works for integer amount of seconds
 // From "Intro-to-C-Linux" TTK4235
 
 int get_wall_time(void);
+//git comment
 
 // Function starts timer and sets duration to int dur.
 
