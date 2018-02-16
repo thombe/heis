@@ -6,7 +6,7 @@ int main() {
     // Initialize hardware
 
     // Endring gjort på GHUASNUN
-
+    // endring fra edmond pc.
     // hva skjer nå da hvis jeg endrer ting fra xps 13.
     if (!elev_init()) {
         printf("Unable to initialize elevator hardware!\n");
