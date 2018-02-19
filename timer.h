@@ -9,6 +9,9 @@ Only works for integer amount of seconds
 #ifndef timer_H
 #define timer_H
 
+static int t;
+static int duration;
+
 // Function converts timeval struct to double
 // From "Intro-to-C-Linux" TTK4235
 
