@@ -9,9 +9,6 @@ Only works for integer amount of seconds
 #include "sys/time.h"
 
 
-static int t = 0;
-static int duration;
-
 int get_wall_time(void)
 {
     struct timeval time;
