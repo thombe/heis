@@ -10,7 +10,7 @@ Module implements controller for the elevator
 static elev_motor_direction_t DIR = 0;
 static int last_floor;
 
-//Function sets motor direction
+//Function sets direction. 0 = stop, 1 is up , -1 is down
 void set_DIR(elev_motor_direction_t d);
 
 //Function returns current direction
