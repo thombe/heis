@@ -5,10 +5,11 @@ Module implements controller for the elevator
 */
 
 #include "controller.h"
-
+#include "elev.h"
 void set_DIR(elev_motor_direction_t d)
 {
     DIR = d;
+    elev_set_motor_direction(d);
 }
 
 elev_motor_direction_t get_DIR()
