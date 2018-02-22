@@ -1,7 +1,7 @@
 /*
 State machine module for elevator project TTK4235
 Module implements state machine functionality for the elevator
-2018 thombe
+2018 thombe test
 */
 
 #include "state.h"
