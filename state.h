@@ -7,12 +7,17 @@ Module implements state machine functionality for the elevator
 #ifndef state_H
 #define state_H
 
-enum States { uninit, wait , up , down , reached , emergency };
+typedef enum {
+     UNINIT,
+     WAIT,
+     UP,
+     DOWN,
+     REACHED,
+     EMERGENCY
+ } States;
 
 //Variable that holds current state. Only accesable for state module
-static enum States state = uninit;
-
-typedef enum States States;
+static States state = UNINIT;
 
 //Function that sets static variable state in module.
 void change_state(States s);

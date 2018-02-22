@@ -19,12 +19,12 @@ States get_state()
 char* get_state_string()
 {
     switch (state) {
-        case uninit: return "uninit";
-        case wait: return "wait";
-        case up: return "up";
-        case down: return "down";
-        case reached: return "reached";
-        case emergency: return "emergency";
+        case UNINIT: return "uninit";
+        case WAIT: return "wait";
+        case UP: return "up";
+        case DOWN: return "down";
+        case REACHED: return "reached";
+        case EMERGENCY: return "emergency";
         default: return "undefined value";
     }
 }
