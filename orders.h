@@ -19,3 +19,6 @@ int get_order(elev_button_type_t dir, int floor);
 int add_order(elev_button_type_t dir , int floor);
 
 int del_order();
+
+//Function loops through and flushes orders. Should be called when entering emergency state
+void flush_orders();
