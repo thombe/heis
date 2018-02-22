@@ -16,6 +16,15 @@ States get_state()
     return state;
 }
 
-main(void) {
-    
+char* get_state_string()
+{
+    switch (state) {
+        case uninit: return "uninit";
+        case wait: return "wait";
+        case up: return "up";
+        case down: return "down";
+        case reached: return "reached";
+        case emergency: return "emergency";
+        default: return "undefined value";
+    }
 }
