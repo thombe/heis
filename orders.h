@@ -5,9 +5,10 @@
 
 #define N_BUTTONS 3
 
-
+//Matrix for holding all orders.
 static int orders[N_FLOORS][N_BUTTONS];
-static int current_order = 0;
+//Variable for holding current order. -1 means no order.
+static int current_order = -1;
 
 
 
@@ -21,3 +22,9 @@ int del_order();
 
 //Function loops through and flushes orders. Should be called when entering emergency state
 void flush_orders();
+
+//Function returns current order value
+int get_current_order();
+
+//Function to set current order to first it can find in matrix.
+void set_current_order();
