@@ -27934,7 +27934,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+orderArray 3*4",
+											"text": "+orders 4*3",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -29988,11 +29988,10 @@
 							"_parent": {
 								"$ref": "AAAAAAFhnbBflhiXzJU="
 							},
-							"name": "orderArray 3*4",
+							"name": "orders 4*3",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
