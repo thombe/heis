@@ -33,7 +33,7 @@ void add_order()
       {
         continue;
       }
-      if(button_type == BUTTON_CALL_down && floors == 0)
+      if(button_type == BUTTON_CALL_DOWN && floors == 0)
       {
         continue;
       }

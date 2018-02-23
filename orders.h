@@ -23,8 +23,7 @@ int del_order();
 
 //Function loops through and flushes orders. Should be called when entering emergency state
 void flush_orders();
-<<<<<<< HEAD
-=======
+
 
 //Function returns current order value
 int get_current_order();
@@ -32,4 +31,4 @@ int get_current_order();
 //Function to set current order to first it can find in matrix.
 void set_current_order();
 #endif
->>>>>>> a7bcd7efa8efb7025b60449facc84f627d4ec410
+
