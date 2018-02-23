@@ -5,6 +5,7 @@ Only works for integer amount of seconds
 2018 thombe
 */
 
+#define NULL 0
 #include "timer.h"
 #include "sys/time.h"
 

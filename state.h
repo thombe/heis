@@ -34,6 +34,6 @@ char* get_state_string();
 int enter_emergency();
 
 //Function to be called when entering REACHED state.
-void enter_reached();
+void reach_floor();
 
 #endif
