@@ -37,3 +37,12 @@ int get_last_floor()
 {
     return last_floor;
 }
+
+int initialize()
+{
+    while (!elev_get_floor_sensor_signal()) {
+        elev_set_motor_direction(DIRN_DOWN);
+    }
+    set_last_floor(elev_get_floor_sensor_signal());
+    elev_set_door_open_lamp(0);
+}

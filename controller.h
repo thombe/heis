@@ -25,4 +25,7 @@ void set_last_floor(int f);
 //Function returns last floor visited. 0 is ground floor, 3 is top
 int get_last_floor();
 
+//Function returns true when elevator is at a floor with its door closed
+int initialize();
+
 #endif
