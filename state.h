@@ -13,6 +13,8 @@ typedef enum {
      UP,
      DOWN,
      REACHED,
+     ATFLOOR,
+     PICKUP,
      EMERGENCY
  } States;
 

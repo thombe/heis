@@ -23,11 +23,19 @@ void change_state(States s)
             set_DIR(DIRN_DOWN);
             break;
         case REACHED:
-            enter_reached();
+            reach_floor();
+            //Missing code to delete order.
+            break;
+        case ATFLOOR:
+            set_last_floor(elev_get_floor_sensor_signal());
+            break;
+        case PICKUP:
+            reach_floor();
             break;
         case EMERGENCY:
             enter_emergency();
             break;
+
     }
 }
 
@@ -44,6 +52,8 @@ char* get_state_string()
         case UP: return "up";
         case DOWN: return "down";
         case REACHED: return "reached";
+        case ATFLOOR: return "atfloor";
+        case PICKUP: return "pickup";
         case EMERGENCY: return "emergency";
         default: return "undefined value";
     }
@@ -61,11 +71,9 @@ int enter_emergency()
     }
     return 0;
 }
-void enter_reached()
+void reach_floor()
 {
     set_DIR(DIRN_STOP);
-    set_last_floor(elev_get_floor_sensor_signal());
     elev_set_door_open_lamp(1);
     start_timer(3);
-    //Missing code to delete order that was completed.
 }
