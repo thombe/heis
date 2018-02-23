@@ -16,7 +16,7 @@ int main() {
 
 
     while (1) {
-        initialize();
+        //initialize();
         if (elev_get_stop_signal()) {
             elev_set_motor_direction(DIRN_STOP);
             break;
