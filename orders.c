@@ -26,3 +26,12 @@ int get_order(elevator_button_type_t dir, int floor)
       break;
   }
 }
+
+void flush_orders()
+{
+	for(int i = 0; i < N_FLOORS; ++i){
+		for(int j = 0; j < N_BUTTONS; ++j){
+		orders[i][j] = 0;
+		}
+	}
+}
