@@ -40,7 +40,7 @@ int get_last_floor()
 
 int initialize()
 {
-    while (!elev_get_floor_sensor_signal()) {
+    if (!elev_get_floor_sensor_signal()) {
         elev_set_motor_direction(DIRN_DOWN);
     }
     //set_last_floor(elev_get_floor_sensor_signal());
