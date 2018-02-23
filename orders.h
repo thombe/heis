@@ -2,7 +2,9 @@
 #ifndef orders_H
 #define orders_H
 
+#include "elev.h"
 #define N_BUTTONS 3
+#define N_FLOORS 4
 
 //Matrix for holding all orders.
 static int orders[N_FLOORS][N_BUTTONS];
