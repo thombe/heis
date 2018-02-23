@@ -18,12 +18,25 @@ int main() {
 
     while (1) {
 		//elev_set_motor_direction(DIRN_DOWN);
-        initialize();
-		change_state(WAIT);
+		//printf("%s\n" , get_state_string());
+        if (get_state() == UNINIT) {
+			initialize();
+			change_state(WAIT);
+		}
+		
 		add_order();
-		set_current_order();
+		if (get_current_order() == -1) {
+			set_current_order();
+		}
 		if(get_current_order() > get_last_floor()) {
 			change_state(UP);
+		} else if (get_current_order() != -1 && get_current_order() < get_last_floor()) {
+			change_state(DOWN);
+		} else if (get_current_order() != -1 && elev_get_floor_sensor_signal() != -1) {
+			change_state(ATFLOOR);
+			if(get_current_order() == get_last_floor()) {
+				change_state(REACHED);
+			}
 		}			
 		if (elev_get_stop_signal()) {
             elev_set_motor_direction(DIRN_STOP);

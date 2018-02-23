@@ -81,4 +81,5 @@ void set_current_order()
 			}
 		}
 	}
+	current_order = -1;
 }

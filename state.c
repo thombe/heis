@@ -9,6 +9,7 @@ Module implements state machine functionality for the elevator
 #include "orders.h"
 #include "timer.h"
 #include "elev.h"
+#include <stdio.h>
 void change_state(States s)
 {
     state = s;
@@ -24,7 +25,8 @@ void change_state(States s)
             break;
         case REACHED:
             reach_floor();
-            //Missing code to delete order.
+            del_order(get_last_floor());
+	    set_current_order();
             break;
         case ATFLOOR:
             set_last_floor(elev_get_floor_sensor_signal());
@@ -35,6 +37,8 @@ void change_state(States s)
         case EMERGENCY:
             enter_emergency();
             break;
+	case UNINIT:
+	    break;
 
     }
 }
@@ -76,4 +80,5 @@ void reach_floor()
     set_DIR(DIRN_STOP);
     elev_set_door_open_lamp(1);
     start_timer(3);
+    printf("reach_floor called");
 }
