@@ -64,6 +64,7 @@ int enter_emergency()
 void enter_reached()
 {
     set_DIR(DIRN_STOP);
+    set_last_floor(elev_get_floor_sensor_signal());
     elev_set_door_open_lamp(1);
     start_timer(3);
     //Missing code to delete order that was completed.

@@ -1,12 +1,6 @@
+//Order module for elevator TTK4235
 #include "orders.h"
 #include "elev.h"
-
-for(int i = 0; i < N_FLOORS; ++i){
-	for(int j = 0; j < N_BUTTONS; ++j){
-		orders[i][j] = 0;
-	}
-}
-
 
 int get_order(elevator_button_type_t dir, int floor)
 {
@@ -49,9 +43,26 @@ int add_order()
 
 void flush_orders()
 {
-	for(int i = 0; i < N_FLOORS; ++i){
+	for(int i = 0; i < N_FLOORS; ++i) {
 		for(int j = 0; j < N_BUTTONS; ++j){
 		  orders[i][j] = 0;
+		}
+	}
+}
+
+int get_current_order()
+{
+	return current_order;
+}
+
+void set_current_order()
+{
+	for (int i = 0; i < N_FLOORS; i++) {
+		for (int j = 0; j < N_BUTTONS; j++) {
+			if (orders[i][j]) {
+				current_order = i;
+				return;
+			}
 		}
 	}
 }

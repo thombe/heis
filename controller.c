@@ -30,6 +30,7 @@ char* get_DIR_string()
 void set_last_floor(int f)
 {
     last_floor = f;
+    elev_set_floor_indicator(f);
 }
 
 int get_last_floor()
