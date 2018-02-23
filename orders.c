@@ -27,6 +27,15 @@ int add_order()
   {
     for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type)
     {
+      if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1)
+      {
+        continue;
+      }
+      if(button_type == BUTTON_CALL_down && floors == 0)
+      {
+        continue;
+      }
+      
       if(get_order(button_type, floors) == 1) // button_type at floor is detected
       {
         order[floors][button_type] = 1;
