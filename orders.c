@@ -1,6 +1,8 @@
 //Order module for elevator TTK4235
 #include "orders.h"
 #include "elev.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 int get_order(elevator_button_type_t dir, int floor)
 {

@@ -1,7 +1,6 @@
 //Order module for elevator TTK4235
-#include <stdlib.h>
-#include <stdio.h>
-#include "elev.h"
+#ifndef orders_H
+#define orders_H
 
 #define N_BUTTONS 3
 
@@ -28,3 +27,4 @@ int get_current_order();
 
 //Function to set current order to first it can find in matrix.
 void set_current_order();
+#endif
