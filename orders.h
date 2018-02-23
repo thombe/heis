@@ -17,7 +17,7 @@ static int current_order = -1;
 int get_order(elev_button_type_t dir, int floor);
 
 //Function adds any order and illuminates light.
-int add_order();
+void add_order();
 
 //function deletes orders at floor
 void del_order(int floor);
