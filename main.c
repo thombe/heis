@@ -1,4 +1,5 @@
 #include "elev.h"
+#include "orders.h"
 #include <stdio.h>
 
 
@@ -31,6 +32,7 @@ int main() {
             elev_set_motor_direction(DIRN_STOP);
             break;
         }
+	add_order();
     }
 
     return 0;
