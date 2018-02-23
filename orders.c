@@ -1,8 +1,10 @@
 //Order module for elevator TTK4235
 #include "orders.h"
 #include "elev.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-int get_order(elevator_button_type_t dir, int floor)
+int get_order(elev_button_type_t dir, int floor)
 {
   switch(dir)
   {
@@ -21,7 +23,7 @@ int get_order(elevator_button_type_t dir, int floor)
   }
 }
 
-int add_order()
+void add_order()
 {
   for(int floors=0; floors < N_FLOORS; ++floors)
   {
@@ -38,7 +40,7 @@ int add_order()
       
       if(get_order(button_type, floors) == 1) // button_type at floor is detected
       {
-        order[floors][button_type] = 1;
+        orders[floors][button_type] = 1;
         elev_set_button_lamp(button_type, floors, 1);
       }
     }
