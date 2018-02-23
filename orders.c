@@ -1,6 +1,12 @@
 #include "orders.h"
 #include "elev.h"
 
+for(int i = 0; i < N_FLOORS; ++i){
+	for(int j = 0; j < N_BUTTONS; ++j){
+		orders[i][j] = 0;
+	}
+}
+
 
 int get_order(elevator_button_type_t dir, int floor)
 {

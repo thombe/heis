@@ -5,12 +5,10 @@
 
 #define N_BUTTONS 3
 
-typedef struct
-{
-  int button_channel_matrix;
-  int orders[N_FLOORS][N_BUTTONS];
 
-}orders;
+static int orders[N_FLOORS][N_BUTTONS];
+
+
 
 //Function takes floor and dir and returns non-zero if there exists order
 int get_order(elev_button_type_t dir, int floor);
