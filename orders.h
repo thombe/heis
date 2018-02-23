@@ -19,7 +19,8 @@ int get_order(elev_button_type_t dir, int floor);
 //Function adds any order and illuminates light.
 int add_order();
 
-int del_order();
+//function deletes orders at floor
+void del_order(int floor);
 
 //Function loops through and flushes orders. Should be called when entering emergency state
 void flush_orders();
