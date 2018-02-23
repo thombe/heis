@@ -16,7 +16,7 @@ int main() {
 
 
     while (1) {
-        initialize();
+        set_DIR(DIRN_UP);
     }
 
 
