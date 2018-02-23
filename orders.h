@@ -22,6 +22,7 @@ int del_order();
 //Function loops through and flushes orders. Should be called when entering emergency state
 void flush_orders();
 
+
 //Function returns current order value
 int get_current_order();
 
