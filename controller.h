@@ -7,6 +7,8 @@ Module implements controller for the elevator
 #ifndef controller_H
 #define controller_H
 
+#include "elev.h"
+
 static elev_motor_direction_t DIR = 0;
 static int last_floor;
 
