@@ -1,8 +1,10 @@
 //Order module for elevator TTK4235
 #ifndef orders_H
 #define orders_H
-
+#include "elev.h"
 #define N_BUTTONS 3
+#define N_FLOORS 4
+
 
 //Matrix for holding all orders.
 static int orders[N_FLOORS][N_BUTTONS];
@@ -15,7 +17,7 @@ static int current_order = -1;
 int get_order(elev_button_type_t dir, int floor);
 
 //Function adds any order and illuminates light.
-int add_order();
+void add_order();
 
 int del_order();
 
