@@ -1,6 +1,7 @@
 #include "elev.h"
 #include "orders.h"
 #include "controller.h"
+#include "state.h"
 #include <stdio.h>
 
 
@@ -16,9 +17,20 @@ int main() {
 
 
     while (1) {
+		//elev_set_motor_direction(DIRN_DOWN);
         initialize();
+		change_state(WAIT);
+		add_order();
+		set_current_order();
+		if(get_current_order() > get_last_floor()) {
+			change_state(UP);
+		}			
+		if (elev_get_stop_signal()) {
+            elev_set_motor_direction(DIRN_STOP);
+            break;
+        }
     }
-
+	
 
     return 0;
 }

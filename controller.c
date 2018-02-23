@@ -6,6 +6,7 @@ Module implements controller for the elevator
 
 #include "controller.h"
 #include "elev.h"
+#include <stdio.h>
 void set_DIR(elev_motor_direction_t d)
 {
     DIR = d;
@@ -40,9 +41,10 @@ int get_last_floor()
 
 int initialize()
 {
-    if (!elev_get_floor_sensor_signal()) {
-        elev_set_motor_direction(DIRN_DOWN);
+    while (elev_get_floor_sensor_signal() == -1) {
+		set_DIR(DIRN_DOWN);
     }
-    //set_last_floor(elev_get_floor_sensor_signal());
-    //elev_set_door_open_lamp(0);
+	set_DIR(DIRN_STOP);
+    set_last_floor(elev_get_floor_sensor_signal());
+    return 1;
 }
