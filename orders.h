@@ -25,7 +25,8 @@ void add_order();
 int add_order();
 >>>>>>> 50ab2dfb1bea736279c83e3323b10bffd8719b21
 
-int del_order();
+//function deletes orders at floor
+void del_order(int floor);
 
 //Function loops through and flushes orders. Should be called when entering emergency state
 void flush_orders();

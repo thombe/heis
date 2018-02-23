@@ -47,6 +47,12 @@ void add_order()
   }
 }
 
+void del_order(int floor)
+{
+	for (int i = 0; i < N_BUTTONS; i++) {
+		orders[floor][i] = 0;
+	}
+}
 
 
 
