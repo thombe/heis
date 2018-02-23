@@ -7,14 +7,15 @@
 
 
 static int orders[N_FLOORS][N_BUTTONS];
+static int current_order = 0;
 
 
 
 //Function takes floor and dir and returns non-zero if there exists order
 int get_order(elev_button_type_t dir, int floor);
 
-//Function adds order with floor number and direction to matrix and illuminates light.
-int add_order(elev_button_type_t dir , int floor);
+//Function adds any order and illuminates light.
+int add_order();
 
 int del_order();
 
