@@ -37,7 +37,7 @@ void add_order()
       {
         continue;
       }
-      
+
       if(get_order(button_type, floors) == 1) // button_type at floor is detected
       {
         orders[floors][button_type] = 1;
@@ -46,7 +46,6 @@ void add_order()
     }
   }
 }
-
 
 
 
