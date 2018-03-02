@@ -85,10 +85,29 @@ void reach_floor()
 
 void run_state_machine()
 {
+
     switch (state) {
         case UNINIT:
             initialize();
             change_state(WAIT);
             break;
+        case WAIT:
+            int cur_ord = set_current_order();
+            switch (cur_ord) {
+                case -1:
+                    break;
+                default:
+                    int last_floor = get_last_floor()
+                    if (cur_ord > last_floor ) {
+                        change_state(UP);
+                        break;
+                    } else if (cur_ord < last_floor) {
+                        change_state(DOWN);
+                        break;
+                    } else {
+                        change_state(REACHED);
+                        break;
+                    }
+            }
     }
 }
