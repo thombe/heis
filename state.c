@@ -106,7 +106,7 @@ void run_state_machine()
             add_order();
             set_current_order();
             switch (cur_ord) {
-                case -1:
+                case -2:
                     break;
                 default:
                     if (cur_ord > last_floor ) {
