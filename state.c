@@ -115,6 +115,7 @@ void run_state_machine()
             }
         case UP:
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
+                printf("%s\n", get_DIR());
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
                 change_state(ATFLOOR);
