@@ -94,7 +94,7 @@ void run_state_machine()
             change_state(WAIT);
             break;
         case WAIT:
-            printf("In wait state\n", );
+            printf("In wait state\n");
             switch (c) {
                 case -1:
                     break;
