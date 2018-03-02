@@ -103,5 +103,15 @@ int check_floor_dir(int floor_order, elev_motor_direction_t dir)
 }
 
 void del_order_and_dir(int floor , elev_motor_direction_t dir) {
-    orders[floor][dir] = 0;
+{
+    for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type){
+        if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1){
+            continue;
+        }
+        if(button_type == BUTTON_CALL_DOWN && floors == 0) {
+            continue;
+        }
+        orders[floor][button_type] = 0;
+        elev_set_button_lamp(button_type , floor , 0);
+    }
 }
