@@ -72,7 +72,7 @@ int enter_emergency()
 {
     elev_set_stop_lamp(1);
     set_DIR(DIRN_STOP);
-    //flush_orders();
+    flush_orders();
     //Elevator should only open door when it has emergency at floor
     if (elev_get_floor_sensor_signal() != -1) {
         elev_set_door_open_lamp(1);
