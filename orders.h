@@ -34,5 +34,6 @@ void set_current_order();
 //Function check if order at floor is UP (1) or DOWN(-1). Returns true if up
 int check_floor_dir(int floor_order, elev_motor_direction_t dir);
 
-
+//Fuction deletes specific order
+void del_order_and_dir(int floor , elev_set_motor_direction_t dir);
 #endif

@@ -36,6 +36,7 @@ void change_state(States s)
             break;
         case PICKUP:
             reach_floor();
+            del_order_and_dir(get_last_floor() , get_DIR());
             break;
         case EMERGENCY:
             enter_emergency();
