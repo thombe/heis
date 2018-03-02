@@ -104,6 +104,7 @@ void run_state_machine()
             break;
         case WAIT:
             add_order();
+            set_current_order();
             switch (cur_ord) {
                 case -1:
                     break;
