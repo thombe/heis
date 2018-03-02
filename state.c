@@ -133,6 +133,9 @@ void run_state_machine()
             if (cur_floor!= -1) {
                 elev_set_floor_indicator(cur_floor);
             }
+            if (cur_ord < last_floor) {
+                change_state(WAIT);
+            }
             break;
         case DOWN:
             add_order();
