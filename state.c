@@ -144,7 +144,7 @@ void run_state_machine()
             if (duration_passed()) {
                 change_state(WAIT);
             }
-            change_state(WAIT);
+            //change_state(WAIT);
             break;
     }
 }
