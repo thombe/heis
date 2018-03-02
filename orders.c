@@ -51,6 +51,9 @@ void del_order(int floor)
 {
 	for (int i = 0; i < N_BUTTONS; i++) {
 		orders[floor][i] = 0;
+        for (int button_type = BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type) {
+            elev_set_button_lamp(button_type , floor , 0);
+        }
 	}
 }
 
