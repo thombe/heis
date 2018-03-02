@@ -171,6 +171,7 @@ void run_state_machine()
         case EMERGENCY:
             if (!elev_get_stop_signal()) {
                 change_state(WAIT);
+                elev_set_stop_lamp(0);
             }
     }
 }
