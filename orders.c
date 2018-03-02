@@ -82,7 +82,7 @@ void flush_orders()
       }
 
         orders[floors][button_type] = 0;
-        elev_set_button_lamp(button_type, floors, 0);
+        //elev_set_button_lamp(button_type, floors, 0);
     }
   }
   current_order = -1;
