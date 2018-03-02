@@ -24,9 +24,7 @@ int main() {
         //set_current_order();
 		if (elev_get_stop_signal() && get_state() != EMERGENCY) {
             enter_emergency();
-        } else {
-            change_state(WAIT);
-        }
+        } 
     }
 
 

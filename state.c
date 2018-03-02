@@ -168,5 +168,8 @@ void run_state_machine()
             }
             //change_state(WAIT);
             break;
+        case EMERGENCY:
+            set_DIR(DIRN_STOP);
+            flush_orders();
     }
 }
