@@ -116,10 +116,10 @@ void run_state_machine()
                     }
             }
         case UP:
-            if (cur_floor != -1 && check_floor_dir(las_floor , get_DIR())) {
+            if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 printf("current direction is %d\n", get_DIR());
                 change_state(ATFLOOR);
-            } else if (las_floor == cur_ord) {
+            } else if (cur_floor == cur_ord) {
                 printf("Current floor is %d and current direction is %d\n", last_floor , get_DIR());
                 change_state(ATFLOOR);
                 printf("Current floor is %d and current direction is %d\n", last_floor , get_DIR());
