@@ -82,3 +82,13 @@ void reach_floor()
     start_timer(3);
     printf("reach_floor called");
 }
+
+void run_state_machine()
+{
+    switch (state) {
+        case UNINIT:
+            initialize();
+            change_state(WAIT);
+            break;
+    }
+}

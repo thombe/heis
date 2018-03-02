@@ -36,4 +36,7 @@ int enter_emergency();
 //Function to be called when entering REACHED state.
 void reach_floor();
 
+//Main state machine functionality
+void run_state_machine();
+
 #endif
