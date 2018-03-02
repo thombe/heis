@@ -22,6 +22,7 @@ int main() {
         run_state_machine();
         add_order();
         set_current_order();
+        printf("%s\n" , get_state_string());
 		if (elev_get_stop_signal()) {
             elev_set_motor_direction(DIRN_STOP);
             break;
