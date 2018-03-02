@@ -37,6 +37,6 @@ int enter_emergency();
 void reach_floor();
 
 //Main state machine functionality
-void run_state_machine();
+        void run_state_machine();
 
 #endif

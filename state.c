@@ -27,7 +27,7 @@ void change_state(States s)
         case REACHED:
             reach_floor();
             del_order(get_last_floor());
-	    set_current_order();
+	        set_current_order();
             break;
         case ATFLOOR:
             set_last_floor(elev_get_floor_sensor_signal());
@@ -112,11 +112,23 @@ void run_state_machine()
             }
         case UP:
             if (cur_floor != -1) {
-                if (cur_floor == cur_ord) {
-                    change_state(REACHED);
-                } else if (cur_floor ) {
-                    /* code */
-                }
+                change_state(ATFLOOR);
             }
+            break;
+        case DOWN:
+            if (cur_floor != -1) {
+                change_state(ATFLOOR);
+            }
+            break;
+        case ATFLOOR:
+            if (cur_floor == cur_ord) {
+                change_state(REACHED);
+            } //Her skal det sjekkes om order matcher retning og etasje, skal sendes til PICKUP state
+            break;
+        case PICKUP:
+            if (duration_passed()) {
+                change_state(WAIT); //kanske dette ikke funker..
+            }
+            break;
     }
 }
