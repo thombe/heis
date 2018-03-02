@@ -99,9 +99,11 @@ void run_state_machine()
     switch (state) {
         case UNINIT:
             initialize();
+            add_order();
             change_state(WAIT);
             break;
         case WAIT:
+            add_order();
             switch (cur_ord) {
                 case -1:
                     break;
@@ -118,6 +120,7 @@ void run_state_machine()
                     }
             }
         case UP:
+            add_order_reversed();
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 printf("current direction is %d\n", get_DIR());
                 change_state(ATFLOOR);
@@ -131,6 +134,7 @@ void run_state_machine()
             }
             break;
         case DOWN:
+            add_order();
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
@@ -141,6 +145,7 @@ void run_state_machine()
             }
             break;
         case ATFLOOR:
+            add_order();
             start_timer(3);
             if (cur_floor == cur_ord) {
                 change_state(REACHED);
@@ -150,11 +155,13 @@ void run_state_machine()
             //Her skal det sjekkes om order matcher retning og etasje, skal sendes til PICKUP state
             break;
         case PICKUP:
+            add_order();
             if (duration_passed()) {
                 change_state(WAIT); //kanske dette ikke funker..
             }
             break;
         case REACHED:
+            add_order();
             if (duration_passed()) {
                 change_state(WAIT);
             }
