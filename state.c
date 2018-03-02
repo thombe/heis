@@ -29,8 +29,8 @@ void change_state(States s)
         case REACHED:
             reach_floor();
             del_order(get_last_floor());
-            printf("Order deleted\n");
 	        set_current_order();
+            printf("Current order is %d\n" , get_current_order());
             break;
         case ATFLOOR:
             set_last_floor(elev_get_floor_sensor_signal());
