@@ -112,12 +112,14 @@ void run_state_machine()
                     }
             }
         case UP:
-            if (cur_floor != -1) {
+            start_timer(2);
+            if (cur_floor != -1 && duration_passed()) {
                 change_state(ATFLOOR);
             }
             break;
         case DOWN:
-            if (cur_floor != -1) {
+            start_timer(2);
+            if (cur_floor != -1 && duration_passed()) {
                 change_state(ATFLOOR);
             }
             break;
