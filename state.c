@@ -114,20 +114,18 @@ void run_state_machine()
                     }
             }
         case UP:
-            if (cur_floor != -1 ) {
+            if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             }
             break;
         case DOWN:
-            if (cur_floor != -1) {
+            if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             }
             break;
         case ATFLOOR:
             if (cur_floor == cur_ord) {
                 change_state(REACHED);
-            } else if (check_floor_dir(cur_floor , ge)) {
-                /* code */
             }
             //Her skal det sjekkes om order matcher retning og etasje, skal sendes til PICKUP state
             break;
