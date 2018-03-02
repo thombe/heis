@@ -118,7 +118,7 @@ void del_order_and_dir(int floor , elev_motor_direction_t dir)
 
 void add_order_reversed()
 {
-  for(int floors=N_FLOORS-1; floors => 0; --floors)
+  for(int floors=N_FLOORS-1; floors >= 0; --floors)
   {
     for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type)
     {
