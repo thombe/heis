@@ -92,6 +92,7 @@ void run_state_machine()
     int cur_ord = get_current_order();
     int last_floor = get_last_floor();
     int cur_floor = elev_get_floor_sensor_signal();
+    printf("current floor is now set two: \t%d\n", cur_floor);
     int las_floor = get_last_floor();
     //printf("last floor is %d and current order is %d, state is %s\n", last_floor , cur_ord , get_state_string());
     switch (state) {
