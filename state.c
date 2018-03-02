@@ -118,6 +118,7 @@ void run_state_machine()
                 printf("current direction is %d\n", get_DIR());
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
+                printf("Current floor is %d and current direction is %d\n", last_floor , get_DIR());
                 change_state(ATFLOOR);
             }
             if (cur_floor!= -1) {
