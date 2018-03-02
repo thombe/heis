@@ -70,6 +70,12 @@ void flush_orders()
 {
 	for(int i = 0; i < N_FLOORS; ++i) {
 		for(int j = 0; j < N_BUTTONS-1; ++j){
+            if(i == BUTTON_CALL_UP && j == N_FLOORS-1){
+                continue;
+            }
+            if(i == BUTTON_CALL_DOWN && j == 0) {
+                continue;
+            }
 		  orders[i][j] = 0;
           elev_set_button_lamp(j , i , 0);
 		}
