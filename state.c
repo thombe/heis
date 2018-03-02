@@ -86,7 +86,7 @@ void reach_floor()
 void run_state_machine()
 {
     int c;
-    c = set_current_order();
+    c = get_current_order();
     int last_floor = get_last_floor()
     switch (state) {
         case UNINIT:
