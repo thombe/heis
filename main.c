@@ -22,9 +22,8 @@ int main() {
         run_state_machine();
         //add_order();
         //set_current_order();
-		if (elev_get_stop_signal()) {
-            elev_set_motor_direction(DIRN_STOP);
-            break;
+		if (elev_get_stop_signal() && get_state != EMERGENCY) {
+            enter_emergency();
         }
     }
 
