@@ -71,8 +71,10 @@ void flush_orders()
 	for(int i = 0; i < N_FLOORS; ++i) {
 		for(int j = 0; j < N_BUTTONS-1; ++j){
 		  orders[i][j] = 0;
+          elev_set_button_lamp(j , i , 0);
 		}
 	}
+    current_order = -1;
 }
 
 int get_current_order()
