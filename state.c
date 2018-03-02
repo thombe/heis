@@ -87,7 +87,7 @@ void run_state_machine()
 {
     int c;
     c = get_current_order();
-    int last_floor = get_last_floor()
+    int last_floor = get_last_floor();
     switch (state) {
         case UNINIT:
             initialize();
