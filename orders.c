@@ -85,8 +85,8 @@ void flush_orders()
         //elev_set_button_lamp(button_type, floors, 0);
     }
   }
-  printf("Order is flushed\n");
-  current_order = -1;
+  //printf("Order is flushed\n");
+  current_order = -2;
 }
 
 int get_current_order()
