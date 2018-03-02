@@ -102,6 +102,6 @@ int check_floor_dir(int floor_order, elev_motor_direction_t dir)
     }
 }
 
-void del_order_and_dir(int floor , elev_set_motor_direction_t dir) {
+void del_order_and_dir(int floor , elev_motor_direction_t dir) {
     orders[floor][dir] = 0;
 }
