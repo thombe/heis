@@ -85,30 +85,37 @@ void reach_floor()
 
 void run_state_machine()
 {
-    int c;
-    c = get_current_order();
+    int cur_ord = get_current_order();
     int last_floor = get_last_floor();
+    int cur_floor = elev_get_floor_sensor_signal();
     switch (state) {
         case UNINIT:
             initialize();
             change_state(WAIT);
             break;
         case WAIT:
-            printf("In wait state\n and c equals %d" , c);
-            switch (c) {
+            switch (cur_ord) {
                 case -1:
                     break;
                 default:
-                    if (c > last_floor ) {
+                    if (cur_ord > last_floor ) {
                         change_state(UP);
                         break;
-                    } else if (c < last_floor) {
+                    } else if (cur_ord < last_floor) {
                         change_state(DOWN);
                         break;
                     } else {
                         change_state(REACHED);
                         break;
                     }
+            }
+        case UP:
+            if (cur_floor != -1) {
+                if (cur_floor == cur_ord) {
+                    change_state(REACHED);
+                } else if (cur_floor ) {
+                    /* code */
+                }
             }
     }
 }
