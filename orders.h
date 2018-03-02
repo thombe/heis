@@ -37,6 +37,5 @@ int check_floor_dir(int floor_order, elev_motor_direction_t dir);
 //Fuction deletes specific order
 void del_order_and_dir(int floor , elev_motor_direction_t dir);
 
-//Function adds orders reversed
-void add_order_reversed();
+
 #endif

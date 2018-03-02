@@ -121,7 +121,7 @@ void run_state_machine()
                     }
             }
         case UP:
-            add_order_reversed();
+            add_order();
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
