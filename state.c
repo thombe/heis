@@ -95,7 +95,7 @@ void run_state_machine()
     //printf("current floor is now set two: \t%d\n", cur_floor);
     int las_floor = get_last_floor();
     //printf("last floor is %d and current order is %d, state is %s\n", last_floor , cur_ord , get_state_string());
-    printf("Current floor , current order , state , current dir : \t %d , %d , %s , %d\n", cur_floor , cur_ord , get_state_string() , get_DIR());
+    printf("FLOOR: %d\t ORDER: %d\t STATE %s\t DIR: %d\n", cur_floor , cur_ord , get_state_string() , get_DIR());
     switch (state) {
         case UNINIT:
             initialize();
@@ -123,12 +123,9 @@ void run_state_machine()
         case UP:
             add_order_reversed();
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
-                printf("current direction is %d\n", get_DIR());
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
-                printf("Current floor is %d and current direction is %d\n", cur_floor , get_DIR());
                 change_state(ATFLOOR);
-                printf("Current floor is %d and current direction is %d\n", cur_floor , get_DIR());
             }
             if (cur_floor!= -1) {
                 elev_set_floor_indicator(cur_floor);
