@@ -130,5 +130,10 @@ void run_state_machine()
                 change_state(WAIT); //kanske dette ikke funker..
             }
             break;
+        case REACHED:
+            if (duration_passed()) {
+                change_state(WAIT);
+            }
+            break;
     }
 }
