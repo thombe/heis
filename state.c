@@ -117,14 +117,14 @@ void run_state_machine()
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
-                change_state(REACHED);
+                change_state(ATFLOOR);
             }
             break;
         case DOWN:
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
-                change_state(REACHED);
+                change_state(ATFLOOR);
             }
             break;
         case ATFLOOR:
