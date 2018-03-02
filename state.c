@@ -82,7 +82,6 @@ void reach_floor()
 {
     set_DIR(DIRN_STOP);
     elev_set_door_open_lamp(1);
-    start_timer(3);
     //printf("reach_floor called");
 }
 
@@ -128,6 +127,7 @@ void run_state_machine()
             }
             break;
         case ATFLOOR:
+            start_timer(3);
             if (cur_floor == cur_ord) {
                 change_state(REACHED);
             } else {
