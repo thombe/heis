@@ -68,7 +68,7 @@ void del_order(int floor)
 
 void flush_orders()
 {
-  for(int floors=1; floors < N_FLOORS; ++floors)
+  for(int floors=0; floors < N_FLOORS; ++floors)
   {
     for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type)
     {
@@ -82,7 +82,7 @@ void flush_orders()
       }
 
         orders[floors][button_type] = 0;
-        elev_set_button_lamp(button_type, floors, 0);
+        elev_set_button_lamp(button_type, floors+1, 0);
     }
   }
   current_order = -1;
