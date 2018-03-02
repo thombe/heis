@@ -55,8 +55,6 @@ void del_order(int floor)
 }
 
 
-
-
 void flush_orders()
 {
 	for(int i = 0; i < N_FLOORS; ++i) {
@@ -81,5 +79,4 @@ void set_current_order()
 			}
 		}
 	}
-	current_order = -1;
 }

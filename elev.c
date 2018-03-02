@@ -52,6 +52,7 @@ int elev_init(void) {
     elev_set_door_open_lamp(0);
     elev_set_floor_indicator(0);
 
+
     // Return success.
     return 1;
 }
