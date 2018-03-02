@@ -32,7 +32,7 @@ int get_current_order();
 void set_current_order();
 
 //Function check if order at floor is UP (1) or DOWN(-1). Returns true if up
-int check_floor_dir(int floor_order, int dir);
+int check_floor_dir(int floor_order, elev_motor_direction_t dir);
 
 
 #endif

@@ -126,7 +126,10 @@ void run_state_machine()
         case ATFLOOR:
             if (cur_floor == cur_ord) {
                 change_state(REACHED);
-            } //Her skal det sjekkes om order matcher retning og etasje, skal sendes til PICKUP state
+            } else if (check_floor_dir(cur_floor , ge)) {
+                /* code */
+            }
+            //Her skal det sjekkes om order matcher retning og etasje, skal sendes til PICKUP state
             break;
         case PICKUP:
             if (duration_passed()) {

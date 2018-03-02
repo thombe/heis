@@ -81,11 +81,11 @@ void set_current_order()
 	}
 }
 
-int check_floor_dir(int floor_order, int dir)
+int check_floor_dir(int floor_order, elev_motor_direction_t dir)
 {
-  if (dir == 1) {
-    return order[floor_order][0] == 1;
-  } else (dir == -1) {
-    return order[floor_order][1] == 1;
-  }
+    if (dir == DIRN_UP) {
+        return order[floor_order][0] == 1;
+    } else (dir == DIRN_DOWN) {
+        return order[floor_order][1] == 1;
+    }
 }
