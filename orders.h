@@ -30,4 +30,9 @@ int get_current_order();
 
 //Function to set current order to first it can find in matrix.
 void set_current_order();
+
+//Function check if order at floor is UP (1) or DOWN(-1). Returns true if up
+int check_floor_dir(int floor_order, int dir);
+
+
 #endif

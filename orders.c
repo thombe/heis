@@ -58,7 +58,7 @@ void del_order(int floor)
 void flush_orders()
 {
 	for(int i = 0; i < N_FLOORS; ++i) {
-		for(int j = 0; j < N_BUTTONS; ++j){
+		for(int j = 0; j < N_BUTTONS-1; ++j){
 		  orders[i][j] = 0;
 		}
 	}
@@ -79,4 +79,13 @@ void set_current_order()
 			}
 		}
 	}
+}
+
+int check_floor_dir(int floor_order, int dir)
+{
+  if (dir == 1) {
+    return order[floor_order][0] == 1;
+  } else (dir == -1) {
+    return order[floor_order][1] == 1;
+  }
 }
