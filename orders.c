@@ -115,3 +115,27 @@ void del_order_and_dir(int floor , elev_motor_direction_t dir)
         elev_set_button_lamp(button_type , floor , 0);
     }
 }
+
+void add_order_reversed()
+{
+  for(int floors=N_FLOORS-1; floors => 0; --floors)
+  {
+    for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type)
+    {
+      if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1)
+      {
+        continue;
+      }
+      if(button_type == BUTTON_CALL_DOWN && floors == 0)
+      {
+        continue;
+      }
+
+      if(get_order(button_type, floors) == 1) // button_type at floor is detected
+      {
+        orders[floors][button_type] = 1;
+        elev_set_button_lamp(button_type, floors, 1);
+      }
+    }
+  }
+}
