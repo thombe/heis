@@ -104,7 +104,7 @@ void set_current_order()
 			}
 		}
 	}
-    current_order = -1;
+    current_order = -2;
 }
 
 int check_floor_dir(int floor_order, elev_motor_direction_t dir)

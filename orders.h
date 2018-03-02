@@ -8,8 +8,8 @@
 
 //Matrix for holding all orders.
 static int orders[N_FLOORS][N_BUTTONS];
-//Variable for holding current order. -1 means no order.
-static int current_order = -1;
+//Variable for holding current order. -2 means no order.
+static int current_order = -2;
 
 
 
