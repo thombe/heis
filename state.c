@@ -29,6 +29,7 @@ void change_state(States s)
         case REACHED:
             reach_floor();
             del_order(get_last_floor());
+            printf("Order deleted\n");
 	        set_current_order();
             break;
         case ATFLOOR:
@@ -83,7 +84,7 @@ void reach_floor()
     set_DIR(DIRN_STOP);
     elev_set_door_open_lamp(1);
     start_timer(3);
-    printf("reach_floor called");
+    //printf("reach_floor called");
 }
 
 void run_state_machine()
