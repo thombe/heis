@@ -20,11 +20,11 @@ void change_state(States s)
             break;
         case UP:
             set_DIR(DIRN_UP);
-            start_timer(2);
+            //start_timer(2);
             break;
         case DOWN:
             set_DIR(DIRN_DOWN);
-            start_timer(2);
+            //start_timer(2);
             break;
         case REACHED:
             reach_floor();
@@ -114,12 +114,12 @@ void run_state_machine()
                     }
             }
         case UP:
-            if (cur_floor != -1 && duration_passed()) {
+            if (cur_floor != -1 ) {
                 change_state(ATFLOOR);
             }
             break;
         case DOWN:
-            if (cur_floor != -1 && duration_passed()) {
+            if (cur_floor != -1) {
                 change_state(ATFLOOR);
             }
             break;
