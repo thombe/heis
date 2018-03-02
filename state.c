@@ -92,16 +92,17 @@ void run_state_machine()
             change_state(WAIT);
             break;
         case WAIT:
-            int cur_ord = set_current_order();
-            switch (cur_ord) {
+            int c;
+            c = set_current_order();
+            switch (c) {
                 case -1:
                     break;
                 default:
                     int last_floor = get_last_floor()
-                    if (cur_ord > last_floor ) {
+                    if (c > last_floor ) {
                         change_state(UP);
                         break;
-                    } else if (cur_ord < last_floor) {
+                    } else if (c < last_floor) {
                         change_state(DOWN);
                         break;
                     } else {
