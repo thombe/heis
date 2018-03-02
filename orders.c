@@ -70,13 +70,13 @@ void flush_orders()
 {
 	for(int floors = 0; i < N_FLOORS; ++floors) {
 		for(int button_type = BUTTON_CALL_UP; button_type <= BUTTON_COMMAND-1; ++button_type){
-            if(i == BUTTON_CALL_UP && j == N_FLOORS-1){
+            if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1){
                 continue;
             }
-            if(i == BUTTON_CALL_DOWN && j == 0) {
+            if(button_type == BUTTON_CALL_DOWN && floors == 0) {
                 continue;
             }
-		  orders[i][j] = 0;
+		  orders[floors][button_type] = 0;
           elev_set_button_lamp(button_type , floors , 0);
 		}
 	}
