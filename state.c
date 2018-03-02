@@ -95,6 +95,7 @@ void run_state_machine()
     //printf("current floor is now set two: \t%d\n", cur_floor);
     int las_floor = get_last_floor();
     //printf("last floor is %d and current order is %d, state is %s\n", last_floor , cur_ord , get_state_string());
+    printf("Current floor , current order , state : \t %d , %d , %s\n", cur_floor , cur_ord , get_state_string());
     switch (state) {
         case UNINIT:
             initialize();
