@@ -13,6 +13,7 @@ int main() {
         return 1;
     }
 
+    printf("Press STOP button to stop elevator and exit program.\n");
 
 
     while (1) {
@@ -21,7 +22,6 @@ int main() {
         run_state_machine();
         add_order();
         set_current_order();
-        printf("%s\n" , get_state_string());
 		if (elev_get_stop_signal()) {
             elev_set_motor_direction(DIRN_STOP);
             break;
