@@ -119,12 +119,18 @@ void run_state_machine()
             } else if (cur_floor == cur_ord) {
                 change_state(ATFLOOR);
             }
+            if (cur_floor!= -1) {
+                elev_set_floor_indicator(cur_floor);
+            }
             break;
         case DOWN:
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
                 change_state(ATFLOOR);
+            }
+            if (cur_floor!= -1) {
+                elev_set_floor_indicator(cur_floor);
             }
             break;
         case ATFLOOR:
