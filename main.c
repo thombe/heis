@@ -13,7 +13,6 @@ int main() {
         return 1;
     }
 
-    printf("Press STOP button to stop elevator and exit program.\n");
 
 
     while (1) {
