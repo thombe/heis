@@ -33,6 +33,7 @@ void change_state(States s)
             break;
         case ATFLOOR:
             set_last_floor(elev_get_floor_sensor_signal());
+            printf("last floor is now %d\n", get_last_floor());
             break;
         case PICKUP:
             reach_floor();
