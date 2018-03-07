@@ -120,15 +120,17 @@ void run_state_machine()
                         break;
                     }
             }
+            break;
         case UP:
             add_order();
+
+            if (cur_floor!= -1) {
+                elev_set_floor_indicator(cur_floor);
+            }
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
                 change_state(ATFLOOR);
-            }
-            if (cur_floor!= -1) {
-                elev_set_floor_indicator(cur_floor);
             }
             if (cur_ord < last_floor) {
                 change_state(WAIT);
@@ -136,13 +138,14 @@ void run_state_machine()
             break;
         case DOWN:
             add_order();
+            //printf("Entering down state\n");
+            if (cur_floor!= -1) {
+                elev_set_floor_indicator(cur_floor);
+            }
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
                 change_state(ATFLOOR);
-            }
-            if (cur_floor!= -1) {
-                elev_set_floor_indicator(cur_floor);
             }
             break;
         case ATFLOOR:

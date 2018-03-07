@@ -111,8 +111,10 @@ int check_floor_dir(int floor_order, elev_motor_direction_t dir)
 {
     if (dir == 1) {
         return orders[floor_order][0] == 1;
-    } else {
+    } else if (dir == -1) {
         return orders[floor_order][1] == 1;
+    } else {
+      return 0;
     }
 }
 
