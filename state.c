@@ -116,7 +116,7 @@ void run_state_machine()
                         change_state(DOWN);
                         break;
                     } else {
-                        change_state(REACHED);
+                        change_state(ATFLOOR);
                         break;
                     }
             }
