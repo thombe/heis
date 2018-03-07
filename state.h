@@ -15,7 +15,8 @@ typedef enum {
      REACHED,
      ATFLOOR,
      PICKUP,
-     EMERGENCY
+     EMERGENCY,
+     WAITE
  } States;
 
 //Variable that holds current state. Only accesable for state module

@@ -29,7 +29,7 @@ void change_state(States s)
         case REACHED:
             reach_floor();
             del_order(get_last_floor());
-	        set_current_order();
+	          set_current_order();
             break;
         case ATFLOOR:
             set_last_floor(elev_get_floor_sensor_signal());
@@ -43,6 +43,7 @@ void change_state(States s)
             enter_emergency();
             break;
 	      case UNINIT:
+        case WAITE:
 	    break;
 
     }
@@ -64,6 +65,7 @@ char* get_state_string()
         case ATFLOOR: return "atfloor";
         case PICKUP: return "pickup";
         case EMERGENCY: return "emergency";
+        case WAITE: return "waitE";
         default: return "undefined value";
     }
 }
@@ -93,7 +95,6 @@ void run_state_machine()
     int last_floor = get_last_floor();
     int cur_floor = elev_get_floor_sensor_signal();
     //printf("current floor is now set two: \t%d\n", cur_floor);
-    int las_floor = get_last_floor();
     //printf("last floor is %d and current order is %d, state is %s\n", last_floor , cur_ord , get_state_string());
     printf("FLOOR: %d\t ORDER: %d\t STATE %s\t DIR: %d\n", cur_floor , cur_ord , get_state_string() , get_DIR());
     switch (state) {
@@ -116,19 +117,41 @@ void run_state_machine()
                         change_state(DOWN);
                         break;
                     } else {
-                        change_state(REACHED);
+                        change_state(ATFLOOR);
                         break;
                     }
             }
+            break;
+        case WAITE:
+            add_order();
+            set_current_order();
+            if (cur_ord == -2) {
+              break;
+            }
+            if (cur_ord > last_floor) {
+              change_state(UP);
+            } else if (cur_ord < last_floor) {
+              change_state(DOWN);
+            } else {
+              switch (get_last_dir()) {
+                case 1:
+                    change_state(DOWN);
+                    break;
+                case -1:
+                    change_state(UP);
+                    break;
+              }
+            }
         case UP:
             add_order();
+
+            if (cur_floor!= -1) {
+                elev_set_floor_indicator(cur_floor);
+            }
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
                 change_state(ATFLOOR);
-            }
-            if (cur_floor!= -1) {
-                elev_set_floor_indicator(cur_floor);
             }
             if (cur_ord < last_floor) {
                 change_state(WAIT);
@@ -136,13 +159,16 @@ void run_state_machine()
             break;
         case DOWN:
             add_order();
+            //printf("Entering down state\n");
+            if (cur_floor!= -1) {
+                elev_set_floor_indicator(cur_floor);
+            }
             if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
                 change_state(ATFLOOR);
-            }
-            if (cur_floor!= -1) {
-                elev_set_floor_indicator(cur_floor);
+            } else if (cur_floor != -1 && check_floor(cur_floor)) {
+              change_state(ATFLOOR);
             }
             break;
         case ATFLOOR:
@@ -170,7 +196,7 @@ void run_state_machine()
             break;
         case EMERGENCY:
             if (!elev_get_stop_signal()) {
-                change_state(WAIT);
+                change_state(WAITE);
                 elev_set_stop_lamp(0);
             }
     }

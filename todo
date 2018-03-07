@@ -1,10 +1,10 @@
 TODO:
 
-*Merke om den er over eller under ved emergency.
+[FIXED]*Merke om den er over eller under ved emergency.
 *Prioriteringer av bestillinger.
 *Må stoppe hvis det finnes en bestilling som passe på veien.
-*Problem: Kjører nedover, bestilles nedover i lavere etasje, heisen snur ved bestillingen og kjører utenfor definert tilstand.
-*Heisen er i wait state når den kjører nedover.
+[FIXED]*Problem: Kjører nedover, bestilles nedover i lavere etasje, heisen snur ved bestillingen og kjører utenfor definert tilstand.
+[FIXED]*Heisen er i wait state når den kjører nedover.
 
 FAT TEST:
 
@@ -13,7 +13,7 @@ FAT TEST:
 -Bestillinger
 	Heisen blir fastlås.
 -Lys
-	Alt ok
+	[FIXED]Må lyse når du bestiller samme etasje.
 -Dør
 	pkt 18: Dobbel lengde når du bestiller fra samme etasje som den er i.
 -Stoppknapp
