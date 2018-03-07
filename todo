@@ -1,9 +1,9 @@
 TODO:
 
-*Merke om den er over eller under ved emergency.
+[FIXED]*Merke om den er over eller under ved emergency.
 *Prioriteringer av bestillinger.
 *Må stoppe hvis det finnes en bestilling som passe på veien.
-*Problem: Kjører nedover, bestilles nedover i lavere etasje, heisen snur ved bestillingen og kjører utenfor definert tilstand.
+[FIXED]*Problem: Kjører nedover, bestilles nedover i lavere etasje, heisen snur ved bestillingen og kjører utenfor definert tilstand.
 [FIXED]*Heisen er i wait state når den kjører nedover.
 
 FAT TEST:
