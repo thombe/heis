@@ -43,6 +43,7 @@ void change_state(States s)
             enter_emergency();
             break;
 	      case UNINIT:
+        case WAITE:
 	    break;
 
     }
@@ -64,6 +65,7 @@ char* get_state_string()
         case ATFLOOR: return "atfloor";
         case PICKUP: return "pickup";
         case EMERGENCY: return "emergency";
+        case WAITE: return "waitE";
         default: return "undefined value";
     }
 }
@@ -123,13 +125,22 @@ void run_state_machine()
         case WAITE:
             add_order();
             set_current_order();
-            switch (get_last_dir()) {
-              case 1:
-                  if (cur_ord > last_floor) {
+            if (cur_ord == -2) {
+              break;
+            }
+            if (cur_ord > last_floor) {
+              change_state(UP);
+            } else if (cur_ord < last_floor) {
+              change_state(DOWN);
+            } else {
+              switch (get_last_dir()) {
+                case 1:
+                    change_state(DOWN);
+                    break;
+                case -1:
                     change_state(UP);
-                  } else if (cur) {
-                    /* code */
-                  }
+                    break;
+              }
             }
         case UP:
             add_order();
@@ -183,7 +194,7 @@ void run_state_machine()
             break;
         case EMERGENCY:
             if (!elev_get_stop_signal()) {
-                change_state(WAIT);
+                change_state(WAITE);
                 elev_set_stop_lamp(0);
             }
     }
