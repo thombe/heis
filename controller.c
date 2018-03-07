@@ -11,6 +11,9 @@ void set_DIR(elev_motor_direction_t d)
 {
     DIR = d;
     elev_set_motor_direction(d);
+    if (d != 0) {
+      last_dir = d;
+    }
 }
 
 elev_motor_direction_t get_DIR()
@@ -46,4 +49,7 @@ int initialize()
 	set_DIR(DIRN_STOP);
     set_last_floor(elev_get_floor_sensor_signal());
     return 1;
+}
+int get_last_dir() {
+  return last_dir;
 }

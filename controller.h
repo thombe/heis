@@ -11,6 +11,7 @@ Module implements controller for the elevator
 
 static elev_motor_direction_t DIR = 0;
 static int last_floor;
+static int last_dir = 0;
 
 //Function sets direction. 0 = stop, 1 is up , -1 is down
 void set_DIR(elev_motor_direction_t d);
@@ -29,5 +30,8 @@ int get_last_floor();
 
 //Function returns true when elevator is at a floor with its door closed
 int initialize();
+
+//Function returns last direction != 0
+int get_last_dir();
 
 #endif

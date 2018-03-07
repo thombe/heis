@@ -107,6 +107,7 @@ void set_current_order()
     current_order = -2;
 }
 
+
 int check_floor_dir(int floor_order, elev_motor_direction_t dir)
 {
     if (dir == 1) {
@@ -130,4 +131,12 @@ void del_order_and_dir(int floor , elev_motor_direction_t dir)
         orders[floor][button_type] = 0;
         elev_set_button_lamp(button_type , floor , 0);
     }
+}
+void print() {
+  for (size_t i = 0; i < N_FLOORS; i++) {
+    for (size_t j = 0; j < N_BUTTONS; j++) {
+      printf("%d\t", orders[i][j]);
+    }
+    printf("\n");
+  }
 }

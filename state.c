@@ -29,7 +29,7 @@ void change_state(States s)
         case REACHED:
             reach_floor();
             del_order(get_last_floor());
-	        set_current_order();
+	          set_current_order();
             break;
         case ATFLOOR:
             set_last_floor(elev_get_floor_sensor_signal());
@@ -120,6 +120,17 @@ void run_state_machine()
                     }
             }
             break;
+        case WAITE:
+            add_order();
+            set_current_order();
+            switch (get_last_dir()) {
+              case 1:
+                  if (cur_ord > last_floor) {
+                    change_state(UP);
+                  } else if (cur) {
+                    /* code */
+                  }
+            }
         case UP:
             add_order();
 
