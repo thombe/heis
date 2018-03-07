@@ -140,3 +140,6 @@ void print() {
     printf("\n");
   }
 }
+int check_floor(int floors){
+  return orders[floors][2];
+}

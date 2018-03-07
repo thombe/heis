@@ -167,6 +167,8 @@ void run_state_machine()
                 change_state(ATFLOOR);
             } else if (cur_floor == cur_ord) {
                 change_state(ATFLOOR);
+            } else if (cur_floor != -1 && check_floor(cur_floor)) {
+              change_state(ATFLOOR);
             }
             break;
         case ATFLOOR:

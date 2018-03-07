@@ -39,4 +39,6 @@ void del_order_and_dir(int floor , elev_motor_direction_t dir);
 
 void print();
 
+int check_floor(int floors);
+
 #endif
