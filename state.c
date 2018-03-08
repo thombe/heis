@@ -25,16 +25,13 @@ void change_state(States s)
             set_DIR(DIRN_DOWN);
             break;
         case REACHED:
-            reach_floor();
-            del_order(get_last_floor());
-	        set_current_order();
             break;
         case ATFLOOR:
+            reach_floor();
+            del_order(get_last_floor());
             set_last_floor(elev_get_floor_sensor_signal());
             break;
         case PICKUP:
-            reach_floor();
-            del_order_and_dir(get_last_floor() , get_DIR());
             break;
         case EMERGENCY:
             enter_emergency();
@@ -176,7 +173,11 @@ void run_state_machine()
         case PICKUP:
             add_order();
             if (duration_passed()) {
-                change_state(WAIT);
+                if (get_last_dir() == 1) {
+                    change_state(UP);
+                } else if (get_last_dir() == -1) {
+                    change_state(DOWN);
+                }
             }
             break;
         case REACHED:
