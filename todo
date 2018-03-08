@@ -25,3 +25,5 @@ Prøve endre på check_floor_dir sånn at den gjør at check_floor er unødvendi
 Mulig vi ikke egentlig trenger to states på reached og pickup.... Gjør veldig mye det samme.
 Endre på state så vi ikke trenger reached og pickup som ulike.
 Prioriteringer i set_current_order.
+
+Tror egentlig ikke vanlig WAIT state er unødvendig sånn som WAITE er laget nå.
