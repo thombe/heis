@@ -123,14 +123,18 @@ void run_state_machine()
             } else if (cur_ord < last_floor) {
               change_state(DOWN);
             } else {
-              switch (get_last_dir()) {
-                case 1:
-                    change_state(DOWN);
-                    break;
-                case -1:
-                    change_state(UP);
-                    break;
-              }
+                if (cur_floor == cur_ord) {
+                    change_state(ATFLOOR);
+                } else {
+                    switch (get_last_dir()) {
+                        case 1:
+                        change_state(DOWN);
+                        break;
+                        case -1:
+                        change_state(UP);
+                        break;
+                    }
+                }
             }
         case UP:
             add_order();
