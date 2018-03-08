@@ -19,3 +19,7 @@ FAT TEST:
 -Stoppknapp
 	pkt 24
 
+Vurderere å endre add_order() til main med guard mot emergency state
+Vurdere å flytte etasje lys setting til main (?)
+Prøve endre på check_floor_dir sånn at den gjør at check_floor er unødvendig.
+Mulig vi ikke egentlig trenger to states på reached og pickup.... Gjør veldig mye det samme.
