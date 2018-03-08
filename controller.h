@@ -13,25 +13,45 @@ static elev_motor_direction_t DIR = 0;
 static int last_floor;
 static int last_dir = 0;
 
-//Function sets direction. 0 = stop, 1 is up , -1 is down
+/*
+   Function sets last floor visited given by @param floor.
+   0 is ground floor, 3 is top
+*/
 void set_DIR(elev_motor_direction_t d);
 
-//Function returns current direction
+/*
+   Function @return current direction (DIRN_DOWN = -1,
+   DIRN_STOP = 0, DIRN_UP = 1)
+*/
 elev_motor_direction_t get_DIR();
 
-//Function return current direction as string
+/*
+   Function @return current direction in STRING format
+*/
 char* get_DIR_string();
 
-//Function sets last floor visited. 0 is ground floor, 3 is top
+/*
+   Function sets last floor visited given by @param floor.
+   0 is ground floor, 3 is top
+*/
 void set_last_floor(int f);
 
-//Function returns last floor visited. 0 is ground floor, 3 is top
+/*
+  Function @return last floor (0-3) visited
+*/
 int get_last_floor();
 
-//Function returns true when elevator is at a floor with its door closed
+/*
+  Function initilizes the elevator. If the elevator is between two floors, it
+  will by default move DOWN until floor is detected.
+  @return 1 when elevator is at a floor with its door closed
+*/
 int initialize();
 
-//Function returns last direction != 0
+/*
+  Function @return last direction (DIRN_DOWN = -1,
+  DIRN_STOP = 0, DIRN_UP = 1) visited
+*/
 int get_last_dir();
 
 #endif
