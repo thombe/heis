@@ -164,10 +164,14 @@ void run_state_machine()
         case ATFLOOR:
             add_order();
             start_timer(3);
-            if (cur_floor == cur_ord) {
-                change_state(REACHED);
-            } else {
-                change_state(PICKUP);
+            if (cur_floor == cur_ord && duration_passed()) {
+                change_state(WAIT);
+            } else if (duration_passed()) {
+                if (get_last_dir() == 1) {
+                    change_state(UP);
+                } else if (get_last_dir() == -1) {
+                    change_state(DOWN);
+                }
             }
             break;
         case PICKUP:
