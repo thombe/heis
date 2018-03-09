@@ -121,26 +121,3 @@ int check_floor_dir(int floor_order, elev_motor_direction_t dir)
     return 0;
 
 }
-
-void del_order_and_dir(int floor , elev_motor_direction_t dir)
-{
-    for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type){
-      if(button_type == BUTTON_CALL_UP && floor == N_FLOORS-1){
-          continue;
-      }
-      if(button_type == BUTTON_CALL_DOWN && floor == 0) {
-          continue;
-      }
-      orders[floor][button_type] = 0;
-      elev_set_button_lamp(button_type , floor , 0);
-    }
-}
-
-void print() {
-  for (size_t i = 0; i < N_FLOORS; i++) {
-    for (size_t j = 0; j < N_BUTTONS; j++) {
-      printf("%d\t", orders[i][j]);
-    }
-    printf("\n");
-  }
-}
