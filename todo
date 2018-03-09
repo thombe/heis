@@ -27,3 +27,11 @@ FAT TEST:
 Prioriteringer i set_current_order.
 
 -Tror egentlig ikke vanlig WAIT state er unødvendig sånn som WAITE er laget nå.
+
+FAT TEST:
+Oppstart ALT OK
+Bestillinger ALT OK
+Bestillingslys og etasjelys ALT OK
+Dør ALT OK
+Stoppknapp ALT OK
+ALT OK.
