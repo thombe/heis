@@ -39,8 +39,8 @@ void change_state(States s)
                 elev_set_door_open_lamp(1);
             }
             break;
-	      case UNINIT:
-	          break;
+	    case UNINIT:
+	         break;
 
     }
 }
@@ -77,11 +77,11 @@ void run_state_machine()
         case WAIT:
             set_current_order();
             if (cur_ord == -2) {
-              break;
+                break;
             } else if (cur_ord > last_floor) {
-              change_state(UP);
+                change_state(UP);
             } else if (cur_ord < last_floor) {
-              change_state(DOWN);
+                change_state(DOWN);
             } else {
                 if (cur_floor == cur_ord) {
                     change_state(ATFLOOR);
@@ -100,7 +100,7 @@ void run_state_machine()
             if (cur_floor!= -1) {
                 elev_set_floor_indicator(cur_floor);
                 if (get_last_floor() != cur_floor) {
-                  set_last_floor(elev_get_floor_sensor_signal());
+                    set_last_floor(elev_get_floor_sensor_signal());
                 }
                 if (check_floor_dir(cur_floor , get_DIR())) {
                     change_state(ATFLOOR);
@@ -113,7 +113,7 @@ void run_state_machine()
             if (cur_floor!= -1) {
                 elev_set_floor_indicator(cur_floor);
                 if (get_last_floor() != cur_floor) {
-                  set_last_floor(elev_get_floor_sensor_signal());
+                    set_last_floor(elev_get_floor_sensor_signal());
                 }
                 if (check_floor_dir(cur_floor , get_DIR())) {
                     change_state(ATFLOOR);
@@ -124,7 +124,7 @@ void run_state_machine()
             break;
         case ATFLOOR:
             del_order(get_last_floor());
-              if (cur_floor == cur_ord && duration_passed()) {
+            if (cur_floor == cur_ord && duration_passed()) {
                 change_state(WAIT);
             } else if (duration_passed()) {
                 elev_set_door_open_lamp(0);

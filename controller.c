@@ -1,7 +1,7 @@
 /*
 Elevator controller module for elevator project TTK4235
 Module implements controller for the elevator
-2018 
+2018
 */
 
 #include "controller.h"
@@ -12,7 +12,7 @@ void set_DIR(elev_motor_direction_t d)
     DIR = d;
     elev_set_motor_direction(d);
     if (d != 0) {
-      last_dir = d;
+        last_dir = d;
     }
 }
 
@@ -50,6 +50,7 @@ int initialize()
     set_last_floor(elev_get_floor_sensor_signal());
     return 1;
 }
-int get_last_dir() {
-  return last_dir;
+int get_last_dir()
+{
+    return last_dir;
 }
