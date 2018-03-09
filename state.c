@@ -1,7 +1,7 @@
 /*
 State machine module for elevator project TTK4235
 Module implements state machine functionality for the elevator
-2018 thombe
+2018
 */
 
 #include "state.h"
@@ -20,24 +20,18 @@ void change_state(States s)
             break;
         case UP:
             set_DIR(DIRN_UP);
-            //start_timer(2);
             break;
         case DOWN:
             set_DIR(DIRN_DOWN);
-            //start_timer(2);
             break;
         case REACHED:
-            reach_floor();
-            del_order(get_last_floor());
-	        set_current_order();
             break;
         case ATFLOOR:
+            reach_floor();
+            del_order(get_last_floor());
             set_last_floor(elev_get_floor_sensor_signal());
-            //printf("last floor is now %d\n", get_last_floor());
             break;
         case PICKUP:
-            reach_floor();
-            del_order_and_dir(get_last_floor() , get_DIR());
             break;
         case EMERGENCY:
             enter_emergency();
@@ -94,9 +88,7 @@ void run_state_machine()
     int cur_ord = get_current_order();
     int last_floor = get_last_floor();
     int cur_floor = elev_get_floor_sensor_signal();
-    //printf("current floor is now set two: \t%d\n", cur_floor);
-    //printf("last floor is %d and current order is %d, state is %s\n", last_floor , cur_ord , get_state_string());
-    printf("FLOOR: %d\t ORDER: %d\t STATE %s\t DIR: %d\n", cur_floor , cur_ord , get_state_string() , get_DIR());
+    printf("FLOOR: %d\t ORDER: %d\t STATE %s\t DIR: %d\n", cur_floor , cur_ord , get_state_string() , get_DIR_string());
     switch (state) {
         case UNINIT:
             initialize();
@@ -106,20 +98,18 @@ void run_state_machine()
         case WAIT:
             add_order();
             set_current_order();
-            switch (cur_ord) {
-                case -2:
-                    break;
-                default:
-                    if (cur_ord > last_floor ) {
-                        change_state(UP);
-                        break;
-                    } else if (cur_ord < last_floor) {
-                        change_state(DOWN);
-                        break;
-                    } else {
-                        change_state(ATFLOOR);
-                        break;
-                    }
+            if (cur_ord == -2) {
+                break;
+            }
+            if (cur_ord > last_floor ) {
+                change_state(UP);
+                break;
+            } else if (cur_ord < last_floor) {
+                change_state(DOWN);
+                break;
+            } else {
+                change_state(ATFLOOR);
+                break;
             }
             break;
         case WAITE:
@@ -133,58 +123,69 @@ void run_state_machine()
             } else if (cur_ord < last_floor) {
               change_state(DOWN);
             } else {
-              switch (get_last_dir()) {
-                case 1:
-                    change_state(DOWN);
-                    break;
-                case -1:
-                    change_state(UP);
-                    break;
-              }
+                if (cur_floor == cur_ord) {
+                    change_state(ATFLOOR);
+                } else {
+                    switch (get_last_dir()) {
+                        case 1:
+                        change_state(DOWN);
+                        break;
+                        case -1:
+                        change_state(UP);
+                        break;
+                    }
+                }
             }
         case UP:
             add_order();
-
             if (cur_floor!= -1) {
                 elev_set_floor_indicator(cur_floor);
-            }
-            if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
-                change_state(ATFLOOR);
-            } else if (cur_floor == cur_ord) {
-                change_state(ATFLOOR);
-            }
-            if (cur_ord < last_floor) {
-                change_state(WAIT);
+                if (check_floor_dir(cur_floor , get_DIR())) {
+                    change_state(ATFLOOR);
+                } else if (cur_floor == cur_ord) {
+                    change_state(ATFLOOR);
+                } else if (check_floor(cur_floor)) {
+                  change_state(ATFLOOR);
+                }
+                if (cur_ord < last_floor) { // Hva gjør denne?..
+                    change_state(WAIT);
+                }
             }
             break;
         case DOWN:
             add_order();
-            //printf("Entering down state\n");
             if (cur_floor!= -1) {
                 elev_set_floor_indicator(cur_floor);
-            }
-            if (cur_floor != -1 && check_floor_dir(cur_floor , get_DIR())) {
-                change_state(ATFLOOR);
-            } else if (cur_floor == cur_ord) {
-                change_state(ATFLOOR);
-            } else if (cur_floor != -1 && check_floor(cur_floor)) {
-              change_state(ATFLOOR);
+                if (check_floor_dir(cur_floor , get_DIR())) {
+                    change_state(ATFLOOR);
+                } else if (cur_floor == cur_ord) {
+                    change_state(ATFLOOR);
+                } else if (check_floor(cur_floor)) {
+                  change_state(ATFLOOR);
+                }
             }
             break;
         case ATFLOOR:
             add_order();
             start_timer(3);
-            if (cur_floor == cur_ord) {
-                change_state(REACHED);
-            } else {
-                change_state(PICKUP);
+            if (cur_floor == cur_ord && duration_passed()) {
+                change_state(WAIT);
+            } else if (duration_passed()) {
+                if (get_last_dir() == 1) {
+                    change_state(UP);
+                } else if (get_last_dir() == -1) {
+                    change_state(DOWN);
+                }
             }
-            //Her skal det sjekkes om order matcher retning og etasje, skal sendes til PICKUP state
             break;
         case PICKUP:
             add_order();
             if (duration_passed()) {
-                change_state(WAIT); //kanske dette ikke funker..
+                if (get_last_dir() == 1) {
+                    change_state(UP);
+                } else if (get_last_dir() == -1) {
+                    change_state(DOWN);
+                }
             }
             break;
         case REACHED:
@@ -192,7 +193,6 @@ void run_state_machine()
             if (duration_passed()) {
                 change_state(WAIT);
             }
-            //change_state(WAIT);
             break;
         case EMERGENCY:
             if (!elev_get_stop_signal()) {

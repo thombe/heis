@@ -19,10 +19,10 @@ int get_order(elev_button_type_t dir, int floor);
 //Function adds any order and illuminates light.
 void add_order();
 
-//function deletes orders at floor
+//function deletes all orders at floor
 void del_order(int floor);
 
-//Function loops through and flushes orders. Should be called when entering emergency state
+//Function loops through and flushes/deletes orders. Should be called when entering emergency state
 void flush_orders();
 
 //Function returns current order value
@@ -31,14 +31,16 @@ int get_current_order();
 //Function to set current order to first it can find in matrix.
 void set_current_order();
 
-//Function check if order at floor is UP (1) or DOWN(-1). Returns true if up
+//Function check if order at floor is UP (1) or DOWN(-1). Returns true if exists matching order
 int check_floor_dir(int floor_order, elev_motor_direction_t dir);
 
 //Fuction deletes specific order
 void del_order_and_dir(int floor , elev_motor_direction_t dir);
 
+//Unused Function
 void print();
 
+//function checks if there exists order from command button at given floor.
 int check_floor(int floors);
 
 #endif

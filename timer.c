@@ -1,8 +1,8 @@
 /*
 Timer module for TTK4235 elevator
 Module provides simple timer functions for elevator.
-Only works for integer amount of seconds
-2018 thombe
+Only implemented for integer amount of seconds
+2018
 */
 
 #define NULL 0
@@ -21,11 +21,6 @@ void start_timer(int dur)
 {
     t = get_wall_time();
     duration = dur;
-}
-
-void stop_timer(void)
-{
-    t = 0;
 }
 
 int duration_passed(void) {

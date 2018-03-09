@@ -29367,6 +29367,7 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
+									"type": "",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -30737,6 +30738,7 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
+									"type": "",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -30752,6 +30754,7 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
+									"type": "",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -47238,7 +47241,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": " [current order not minus 1]",
+											"text": " [current order not minus 2]",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -49614,7 +49617,7 @@
 									},
 									"visibility": "public",
 									"kind": "external",
-									"guard": "current order not minus 1",
+									"guard": "current order not minus 2",
 									"triggers": [
 										{
 											"_type": "UMLEvent",
@@ -56646,6 +56649,41 @@
 									"subViews": [
 										{
 											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFiBsp1RLSHHYY=",
+											"_parent": {
+												"$ref": "AAAAAAFiBXzkGgpys98="
+											},
+											"model": {
+												"$ref": "AAAAAAFiBXzkGgpxN+8="
+											},
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 484,
+											"top": 577,
+											"width": 127.9052734375,
+											"height": 13,
+											"autoResize": false,
+											"alpha": 1.5707963267948966,
+											"distance": 10,
+											"hostEdge": {
+												"$ref": "AAAAAAFiBXzkGgpys98="
+											},
+											"edgePosition": 1,
+											"underline": false,
+											"text": "19 : set_current_order",
+											"horizontalAlignment": 2,
+											"verticalAlignment": 5,
+											"wordWrap": false
+										},
+										{
+											"_type": "EdgeLabelView",
 											"_id": "AAAAAAFiBXzkGwp0q94=",
 											"_parent": {
 												"$ref": "AAAAAAFiBXzkGgpys98="
@@ -56754,6 +56792,9 @@
 									},
 									"lineStyle": 0,
 									"points": "631:573;466:573",
+									"nameLabel": {
+										"$ref": "AAAAAAFiBsp1RLSHHYY="
+									},
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFiBXzkGwp0q94="
 									},
@@ -59875,6 +59916,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -59892,6 +59934,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -59909,6 +59952,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -59926,6 +59970,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -59943,6 +59988,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -59960,6 +60006,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -59977,6 +60024,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,

@@ -1,7 +1,7 @@
 /*
 State machine module for elevator project TTK4235
 Module implements state machine functionality for the elevator
-2018 thombe
+2018
 */
 
 #ifndef state_H
@@ -38,6 +38,6 @@ int enter_emergency();
 void reach_floor();
 
 //Main state machine functionality
-        void run_state_machine();
+void run_state_machine();
 
 #endif
