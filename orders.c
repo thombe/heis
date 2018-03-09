@@ -2,6 +2,7 @@
 #include "orders.h"
 #include "elev.h"
 #include "state.h"
+#include "controller.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -30,8 +31,7 @@ void add_order()
         for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type) {
           if(check_invalid_orders(floors, button_type) == 1){
             continue;
-          }
-          if(get_order(button_type, floors) == 1) {// button_type at floor is detected
+          } else if(get_order(button_type, floors) == 1) {// button_type at floor is detected
             orders[floors][button_type] = 1;
             elev_set_button_lamp(button_type, floors, 1);
           }
@@ -48,7 +48,7 @@ void del_order(int floor)
           if(check_invalid_orders(floor, button_type) == 1){ //sjekk ut floor-argumentet
             continue;
           }
-            elev_set_button_lamp(button_type , floor , 0);
+          elev_set_button_lamp(button_type , floor , 0);
         }
     }
 }
@@ -61,8 +61,8 @@ void flush_orders()
            if(check_invalid_orders(floors, button_type) == 1){
              continue;
            }
-            orders[floors][button_type] = 0;
-            elev_set_button_lamp(button_type, floors, 0);
+           orders[floors][button_type] = 0;
+           elev_set_button_lamp(button_type, floors, 0);
         }
     }
     current_order = -2;
@@ -75,15 +75,26 @@ int get_current_order()
 
 void set_current_order()
 {
-	for (int i = 0; i < N_FLOORS; i++) {
-		for (int j = 0; j < N_BUTTONS; j++) {
-			if (orders[i][j]) {
-				current_order = i;
-				return;
-			}
-		}
-	}
-    current_order = -2;
+  if (get_last_dir() == -1) {
+    for (int i = 0; i < N_FLOORS; i++) {
+      for (int j = 0; j < N_BUTTONS; j++) {
+        if (orders[i][j]) {
+          current_order = i;
+          return;
+        }
+      }
+    }
+  } else {
+    for (int i = N_FLOORS; i >= 0; i--) {
+      for (int j = N_BUTTONS; j >= 0; j++) {
+        if (orders[i][j]) {
+          current_order = i;
+          return;
+        }
+      }
+    }
+  }
+  current_order = -2;
 }
 
 
@@ -119,7 +130,7 @@ void print() {
 }
 
 
-int check_invalid_orders(int floors, int button_type);
+int check_invalid_orders(int floors, int button_type)
 {
   if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1){
       return 1;
@@ -134,4 +145,3 @@ int check_invalid_orders(int floors, int button_type);
      return 0;
   }
 }
-
