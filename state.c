@@ -29,7 +29,7 @@ void change_state(States s)
             start_timer(3);
             set_DIR(DIRN_STOP);
             elev_set_door_open_lamp(1);
-            set_last_floor(elev_get_floor_sensor_signal());
+            //set_last_floor(elev_get_floor_sensor_signal());
             break;
         case EMERGENCY:
             enter_emergency();
@@ -75,7 +75,7 @@ void run_state_machine()
     int cur_ord = get_current_order();
     int last_floor = get_last_floor();
     int cur_floor = elev_get_floor_sensor_signal();
-    printf("FLOOR: %d\t ORDER: %d\t STATE %s\t DIR: %s\n", cur_floor , cur_ord , get_state_string() , get_DIR_string());
+    //printf("FLOOR: %d\t ORDER: %d\t STATE %s\t DIR: %s\n", cur_floor , cur_ord , get_state_string() , get_DIR_string());
     switch (state) {
         case UNINIT:
             initialize();
@@ -87,6 +87,8 @@ void run_state_machine()
               break;
             } else if (cur_ord > last_floor) {
               change_state(UP);
+              //printf("current_order is %d and last floor is %d \n", cur_ord , last_floor);
+              //printf("Last direction was %d and changing state to up\n", get_last_dir());
             } else if (cur_ord < last_floor) {
               change_state(DOWN);
             } else {
@@ -99,6 +101,7 @@ void run_state_machine()
                         break;
                         case -1:
                         change_state(UP);
+                        //printf("Last direction was %d and changing state to up\n", get_last_dir());
                         break;
                     }
                 }
@@ -106,6 +109,9 @@ void run_state_machine()
         case UP:
             if (cur_floor!= -1) {
                 elev_set_floor_indicator(cur_floor);
+                if (get_last_floor() != cur_floor) {
+                  set_last_floor(elev_get_floor_sensor_signal());
+                }
                 if (check_floor_dir(cur_floor , get_DIR())) {
                     change_state(ATFLOOR);
                 } else if (cur_floor == cur_ord) {
@@ -116,6 +122,9 @@ void run_state_machine()
         case DOWN:
             if (cur_floor!= -1) {
                 elev_set_floor_indicator(cur_floor);
+                if (get_last_floor() != cur_floor) {
+                  set_last_floor(elev_get_floor_sensor_signal());
+                }
                 if (check_floor_dir(cur_floor , get_DIR())) {
                     change_state(ATFLOOR);
                 } else if (cur_floor == cur_ord) {
@@ -127,7 +136,7 @@ void run_state_machine()
             del_order(get_last_floor());
               if (cur_floor == cur_ord && duration_passed()) {
                 change_state(WAIT);
-                set_current_order();
+                //set_current_order();
             } else if (duration_passed()) {
                 elev_set_door_open_lamp(0);
                 if (get_last_dir() == 1) {
