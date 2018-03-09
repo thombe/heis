@@ -126,7 +126,6 @@ void run_state_machine()
             del_order(get_last_floor());
               if (cur_floor == cur_ord && duration_passed()) {
                 change_state(WAIT);
-                //set_current_order();
             } else if (duration_passed()) {
                 elev_set_door_open_lamp(0);
                 if (get_last_dir() == 1) {
