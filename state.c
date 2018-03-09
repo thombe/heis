@@ -75,7 +75,7 @@ void run_state_machine()
     int cur_ord = get_current_order();
     int last_floor = get_last_floor();
     int cur_floor = elev_get_floor_sensor_signal();
-    printf("FLOOR: %d\t ORDER: %d\t STATE %s\t DIR: %s\n", cur_floor , cur_ord , get_state_string() , get_DIR_string());
+  //  printf("FLOOR: %d\t ORDER: %d\t STATE %s\t DIR: %s\n", cur_floor , cur_ord , get_state_string() , get_DIR_string());
     switch (state) {
         case UNINIT:
             initialize();
