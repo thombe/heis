@@ -1,6 +1,7 @@
 //Order module for elevator TTK4235
 #include "orders.h"
 #include "elev.h"
+#include "state.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -24,19 +25,21 @@ int get_order(elev_button_type_t dir, int floor)
 
 void add_order()
 {
-		for(int floors=0; floors < N_FLOORS; ++floors) {
+    if (get_state()!=EMERGENCY && get_state()!=UNINIT) {
+      for(int floors=0; floors < N_FLOORS; ++floors) {
         for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type) {
-            if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1) {
-                continue;
-            }
-            if(button_type == BUTTON_CALL_DOWN && floors == 0) {
-                continue;
-            }
-            if(get_order(button_type, floors) == 1) {// button_type at floor is detected
-                orders[floors][button_type] = 1;
-                elev_set_button_lamp(button_type, floors, 1);
-            }
+          if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1) {
+            continue;
+          }
+          if(button_type == BUTTON_CALL_DOWN && floors == 0) {
+            continue;
+          }
+          if(get_order(button_type, floors) == 1) {// button_type at floor is detected
+            orders[floors][button_type] = 1;
+            elev_set_button_lamp(button_type, floors, 1);
+          }
         }
+      }
     }
 }
 
@@ -100,7 +103,7 @@ int check_floor_dir(int floor_order, elev_motor_direction_t dir)
     } else if (dir == -1) {
         return orders[floor_order][1] == 1;
     } else {
-      return 0;
+      return orders[floor_order][2];
     }
 }
 
@@ -124,7 +127,4 @@ void print() {
     }
     printf("\n");
   }
-}
-int check_floor(int floors){
-  return orders[floors][2];
 }

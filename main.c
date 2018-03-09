@@ -17,12 +17,9 @@ int main() {
 
 
     while (1) {
-		//elev_set_motor_direction(DIRN_DOWN);
-		//printf("%s\n" , get_state_string());
         run_state_machine();
-        //add_order();
-        //set_current_order();
-		if (elev_get_stop_signal() && get_state() != EMERGENCY) {
+        add_order();
+		    if (elev_get_stop_signal() && get_state() != EMERGENCY) {
             change_state(EMERGENCY);
         }
     }

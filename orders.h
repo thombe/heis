@@ -40,7 +40,4 @@ void del_order_and_dir(int floor , elev_motor_direction_t dir);
 //Unused Function
 void print();
 
-//function checks if there exists order from command button at given floor.
-int check_floor(int floors);
-
 #endif

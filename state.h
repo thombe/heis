@@ -12,11 +12,8 @@ typedef enum {
      WAIT,
      UP,
      DOWN,
-     REACHED,
      ATFLOOR,
-     PICKUP,
-     EMERGENCY,
-     WAITE
+     EMERGENCY
  } States;
 
 //Variable that holds current state. Only accesable for state module
@@ -35,7 +32,7 @@ char* get_state_string();
 int enter_emergency();
 
 //Function to be called when entering REACHED state.
-void reach_floor();
+//void reach_floor();
 
 //Main state machine functionality
 void run_state_machine();
