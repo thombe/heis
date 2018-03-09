@@ -29,10 +29,15 @@ void change_state(States s)
             start_timer(3);
             set_DIR(DIRN_STOP);
             elev_set_door_open_lamp(1);
-            //set_last_floor(elev_get_floor_sensor_signal());
             break;
         case EMERGENCY:
-            enter_emergency();
+            elev_set_stop_lamp(1);
+            set_DIR(DIRN_STOP);
+            flush_orders();
+            //Elevator should only open door when it has emergency at floor
+            if (elev_get_floor_sensor_signal() != -1) {
+                elev_set_door_open_lamp(1);
+            }
             break;
 	      case UNINIT:
 	          break;
@@ -58,18 +63,6 @@ char* get_state_string()
     }
 }
 
-int enter_emergency()
-{
-    elev_set_stop_lamp(1);
-    set_DIR(DIRN_STOP);
-    flush_orders();
-    //Elevator should only open door when it has emergency at floor
-    if (elev_get_floor_sensor_signal() != -1) {
-        elev_set_door_open_lamp(1);
-        return 1;
-    }
-    return 0;
-}
 void run_state_machine()
 {
     int cur_ord = get_current_order();

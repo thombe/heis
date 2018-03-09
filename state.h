@@ -28,12 +28,6 @@ States get_state();
 //Function returns state as char*, for testing purposes
 char* get_state_string();
 
-//Function to be called when entering EMERGENCY state. Returns 1 if door opens.
-int enter_emergency();
-
-//Function to be called when entering REACHED state.
-//void reach_floor();
-
 //Main state machine functionality
 void run_state_machine();
 
