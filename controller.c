@@ -1,7 +1,7 @@
 /*
 Elevator controller module for elevator project TTK4235
 Module implements controller for the elevator
-2018 thombe
+2018 
 */
 
 #include "controller.h"

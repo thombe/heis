@@ -1,17 +1,18 @@
 /*
 Elevator controller module for elevator project TTK4235
 Module implements controller for the elevator
-2018 thombe
+2018
 */
 
 #ifndef controller_H
 #define controller_H
 
 #include "elev.h"
-
+//DIR holds current direction of elevator
 static elev_motor_direction_t DIR = 0;
 static int last_floor;
-static int last_dir = 0;
+static int last_dir = 0; // Used for checking after emergency.
+//Does not get set to 0 when elevator stops.
 
 /*
    Function sets last floor visited given by @param floor.
@@ -25,9 +26,11 @@ void set_DIR(elev_motor_direction_t d);
 */
 elev_motor_direction_t get_DIR();
 
+
 /*
    Function @return current direction in STRING format
 */
+
 char* get_DIR_string();
 
 /*
@@ -41,11 +44,13 @@ void set_last_floor(int f);
 */
 int get_last_floor();
 
+
 /*
   Function initilizes the elevator. If the elevator is between two floors, it
   will by default move DOWN until floor is detected.
   @return 1 when elevator is at a floor with its door closed
 */
+
 int initialize();
 
 /*
