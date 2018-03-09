@@ -110,13 +110,16 @@ void set_current_order()
 
 int check_floor_dir(int floor_order, elev_motor_direction_t dir)
 {
+    if (orders[floor_order][2]) {
+      return 1;
+    }
     if (dir == 1) {
         return orders[floor_order][0] == 1;
     } else if (dir == -1) {
         return orders[floor_order][1] == 1;
-    } else {
-      return orders[floor_order][2];
     }
+    return 0;
+
 }
 
 void del_order_and_dir(int floor , elev_motor_direction_t dir)
