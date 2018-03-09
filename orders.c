@@ -28,10 +28,7 @@ void add_order()
     if (get_state()!=EMERGENCY && get_state()!=UNINIT) {
       for(int floors=0; floors < N_FLOORS; ++floors) {
         for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type) {
-          if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1) {
-            continue;
-          }
-          if(button_type == BUTTON_CALL_DOWN && floors == 0) {
+          if(check_invalid_orders(floors, button_type) == 1){
             continue;
           }
           if(get_order(button_type, floors) == 1) {// button_type at floor is detected
@@ -48,12 +45,9 @@ void del_order(int floor)
     for (int i = 0; i < N_BUTTONS; i++) {
 		    orders[floor][i] = 0;
         for (int button_type = BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type) {
-            if(button_type == BUTTON_CALL_UP && floor == N_FLOORS-1) {
-                continue;
-            }
-            if(button_type == BUTTON_CALL_DOWN && floor == 0) {
-                continue;
-            }
+          if(check_invalid_orders(floor, button_type) == 1){ //sjekk ut floor-argumentet
+            continue;
+          }
             elev_set_button_lamp(button_type , floor , 0);
         }
     }
@@ -64,12 +58,9 @@ void flush_orders()
 {
     for(int floors=0; floors < N_FLOORS; ++floors) {
         for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type) {
-            if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1) {
-                continue;
-            }
-            if(button_type == BUTTON_CALL_DOWN && floors == 0) {
-                continue;
-            }
+           if(check_invalid_orders(floors, button_type) == 1){
+             continue;
+           }
             orders[floors][button_type] = 0;
             elev_set_button_lamp(button_type, floors, 0);
         }
@@ -110,16 +101,14 @@ int check_floor_dir(int floor_order, elev_motor_direction_t dir)
 void del_order_and_dir(int floor , elev_motor_direction_t dir)
 {
     for(int button_type=BUTTON_CALL_UP; button_type <= BUTTON_COMMAND; ++button_type){
-        if(button_type == BUTTON_CALL_UP && floor == N_FLOORS-1){
-            continue;
-        }
-        if(button_type == BUTTON_CALL_DOWN && floor == 0) {
-            continue;
+       if(check_invalid_orders(floor, button_type) == 1){ //sjekk ut floor argumentet
+          continue;
         }
         orders[floor][button_type] = 0;
         elev_set_button_lamp(button_type , floor , 0);
     }
 }
+
 void print() {
   for (size_t i = 0; i < N_FLOORS; i++) {
     for (size_t j = 0; j < N_BUTTONS; j++) {
@@ -128,3 +117,21 @@ void print() {
     printf("\n");
   }
 }
+
+
+int check_invalid_orders(int floors, int button_type);
+{
+  if(button_type == BUTTON_CALL_UP && floors == N_FLOORS-1){
+      return 1;
+  }
+  else{
+      return 0;
+  }
+  if(button_type == BUTTON_CALL_DOWN && floors == 0) {
+      return 1;
+  }
+  else{
+     return 0;
+  }
+}
+

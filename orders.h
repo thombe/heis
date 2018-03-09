@@ -40,4 +40,14 @@ void del_order_and_dir(int floor , elev_motor_direction_t dir);
 //Unused Function
 void print();
 
+
+
+/*
+  Function checks that assertions for @param button_type and @param floors are met, i.e. we skip
+  orders that do not exist (floor < 0, floor > 3, up_button at floor 3, down_button at floor 0).
+  Returns true (1) if order is invalid and false otherwise.
+*/
+int check_invalid_orders(int floors, int button_type);
+
+
 #endif
