@@ -46,8 +46,8 @@ void del_order(int floor);
 
 
 /*
-  Function flushes/deletes all orders in orders matrix.
-  Sets current order to -2. 
+  Function flushes/deletes all orders in orders matrix (assign elements to 0)
+  Sets current order to -2.
 */
 void flush_orders();
 
