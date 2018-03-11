@@ -1,8 +1,8 @@
 /*
-   Order module for elevator project TTK4235.
-   Module implements necessary functions (add, get, set, delete and check functions)
-   for orders matrix and current order variable
-   2018
+    Order module for elevator project TTK4235.
+    Module implements necessary functions (add, get, set, delete and check functions)
+    for orders matrix and current order variable
+    2018
 */
 
 #ifndef orders_H
