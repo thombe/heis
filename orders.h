@@ -12,8 +12,10 @@
 #define N_BUTTONS 3
 #define N_FLOORS 4
 
+
 //Matrix for holding all orders. 0 means no order.
 static int orders[N_FLOORS][N_BUTTONS];
+
 
 //Variable for holding current order. -2 means no order.
 static int current_order = -2;
@@ -44,7 +46,8 @@ void del_order(int floor);
 
 
 /*
-  Function flushes/deletes all orders in orders matrix
+  Function flushes/deletes all orders in orders matrix (assign elements to 0)
+  Sets current order to -2.
 */
 void flush_orders();
 
@@ -59,7 +62,7 @@ int get_current_order();
 
 /*
   Function sets current_order variable based on elevator direction to get
-  equal prioritization for all orders. If no order exists. Current_order is set to -2
+  equal prioritization for all orders. If no order exist, current order is set to -2
   If direction is DOWN, function sets first element it can find in orders as current order.
   If direction is UP, function sets last element it can find in orders as current order.
 */
