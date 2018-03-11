@@ -7,6 +7,7 @@ Module implements state machine functionality for the elevator
 #ifndef state_H
 #define state_H
 
+//Enum contains all possible states.
 typedef enum {
      UNINIT,
      WAIT,
@@ -16,19 +17,37 @@ typedef enum {
      EMERGENCY
  } States;
 
-//Variable that holds current state. Only accesable for state module
+
+ //Variable that holds current state. Only accesable for state module.
 static States state = UNINIT;
 
-//Function that sets static variable state in module.
+
+/*
+  Function for changing states (given by States enum).
+  Sets state variable to @param s.
+*/
 void change_state(States s);
 
-//Function returns state as state
+
+/*
+  Function gets state variable.
+  @return state as States (enum).
+*/
 States get_state();
 
-//Function returns state as char*, for testing purposes
+
+/*
+  Function gets state variable. Only used for testing purposes.
+  @return state as char*.
+*/
 char* get_state_string();
 
-//Main state machine functionality
+
+/*
+  Function implements state machine functionality.
+  Contains all state logic necessary to run the elevator.
+*/
 void run_state_machine();
+
 
 #endif
