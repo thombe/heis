@@ -12,7 +12,7 @@ Module implements controller for the elevator
 static elev_motor_direction_t DIR = 0;
 static int last_floor;
 static int last_dir = 0; // Used for checking after emergency.
-//Does not get set to 0 when elevator stops.
+//Is not set to 0 when elevator stops.
 
 /*
    Function sets last floor visited given by @param floor.
