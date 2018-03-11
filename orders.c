@@ -1,4 +1,10 @@
-//Order module for elevator TTK4235
+/*
+   Order module for elevator project TTK4235.
+   Module implements necessary functions (add, get, set, delete and check functions)
+   for orders matrix and current order variable
+   2018
+*/
+
 #include "orders.h"
 #include "elev.h"
 #include "state.h"
