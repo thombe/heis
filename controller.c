@@ -7,11 +7,12 @@ Module implements controller for the elevator
 #include "controller.h"
 #include "elev.h"
 #include <stdio.h>
+#include "state.h"
 void set_DIR(elev_motor_direction_t d)
 {
     DIR = d;
     elev_set_motor_direction(d);
-    if (d != 0) {
+    if (d != 0 && elev_get_floor_sensor_signal() != -1) {
         last_dir = d;
     }
 }
